@@ -1985,6 +1985,7 @@ do
 	--[[ Functions ]]--
 	
 	
+	
 	local function createBasis(directory: Instance)
 		local gui = instanceUtils:Create("ScreenGui", {
 			Enabled = false,
@@ -2033,33 +2034,43 @@ do
 		savedScripts:Initialize();
 	end
 	
-	
-	
-	
+	local function createUI(directory: Instance): ScreenGui
+    ui = instanceUtils:Create("ScreenGui", {
+        IgnoreGuiInset = true,
+        Name = "startup",
+        Parent = directory,
+        ResetOnSpawn = false,
+        ZIndexBehavior = Enum.ZIndexBehavior.Global
+    });
 
-		
-			
+    task.spawn(function()
+        local setupStep = startupStep.new("Setting Up...", "Setup Completed!", ui.background):Start();
+        doSetup();
+        setupStep:Complete();
+
+        local loadUIStep = startupStep.new("Loading UI...", "Loaded!", ui.background):Start();
+        local basis = createBasis(directory);
+        loadUIStep:Complete();
+        task.wait(1);
+        completionSignal:Fire(basis);
+    end);
+
+    return ui;
+end
 	
-			
-			local basis = createBasis(directory);
-			loadUIStep:Complete();
-			task.wait(1);
-			completionSignal:Fire(basis);
-		
-		
-		return ui;
-	
-	
+	local function checkWhitelist()
+	    --jithing
+	end
 	--[[ Module ]]--
 	
 	framework.pages.startup.startup = (function(directory: Instance, signal: {any}): ScreenGui
 		completionSignal = signal;
 		
-		
+		if checkWhitelist() then
 			doSetup();
 			signal:Fire(createBasis(directory));
-			
-	
+			return;
+		end
 		
 		return createUI(directory);
 	end);
