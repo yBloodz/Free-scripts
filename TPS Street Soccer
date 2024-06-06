@@ -1,4 +1,3 @@
-
 local RS
 local LeftLeg
 local RightLeg
@@ -26,7 +25,7 @@ local RootPart = Player.Character.HumanoidRootPart
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "yBloodz Premium Loader", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "yBloodz Free Loader", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 --Tabs
  
@@ -113,7 +112,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9w
 })
 
 Tab:AddButton({
-	Name = "Cracks GUI!",
+	Name = "Cracks GUI!(OP)",
 	Callback = function()
       		OrionLib:MakeNotification({
 	Name = "Loading...",
