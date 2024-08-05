@@ -1,6 +1,3 @@
---Phantom Forces ESP V3 By RelentlessRaptor / !!!RelentlessRaptor#5709 on discord.
---Please credit me in any videos you use this in. Thanks.
-wait(0.5)
 plrs = nil
 for _,p in pairs(game:GetChildren()) do
     if p.ClassName == ("Players") then
