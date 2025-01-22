@@ -22,41 +22,44 @@ local TouchedGKBallBox
 local Player = game.Players.LocalPlayer
 local RootPart = Player.Character.HumanoidRootPart
 
+local Players = game:GetService("Players")
+local player = Player
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+-- Locate the ScreenGui in the Player's PlayerGui
+local ScreenGuiDiscord = game.CoreGui:FindFirstChild("Discord")
 
-local Window = OrionLib:MakeWindow({Name = "yBloodz Free Loader", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+if not ScreenGuiDiscord then
+    ScreenGuiDiscord = nil
+end
 
---Tabs
- 
-local aTab = Window:MakeTab({
-	Name = "Main",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+local Neverlose_Main = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mana42138/Neverlose-UI/main/Source.lua"))()
+local Win = Neverlose_Main:Window({
+    Title = "TPS Neverlose",
+    CFG = "TPS Street Soccer",
+    Key = Enum.KeyCode.H,
+    External = {
+        KeySystem = false,
+        Key = {
+            "2025",
+            "yBloodz"
+        }
+    }
 })
 
-local Tab = Window:MakeTab({
-	Name = "GUI(s)",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
+local TabSection1 = Win:TSection("Main")
 
--- Paragraphs
+local Autofarm = TabSection1:Tab("All GUI's") 
 
-aTab:AddParagraph("How to Enable AntiCheat?","Press the AntiCheat Button. 1 time")
+local AutoFSec1 = Autofarm:Section("Main")
 
---Buttons
+local TestFarm1 = AutoFSec1:Toggle("AntiCheat Bypasser", function(arg)
+      	if arg then
+	loadstring(game:HttpGet("https://freenote.biz/raw/vyzuuBLBkX"))()
+	end
+end)
 
-aTab:AddButton({
-	Name = "AntiCheat",
-	Callback = function()
-      		loadstring(game:HttpGet("https://freenote.biz/raw/vyzuuBLBkX"))()
-  	end    
-})
-
-aTab:AddButton({
-	Name = "Purple Sky",
-	Callback = function()
+local sky = AutoFSec1:Toggle("Purple Sky", function(arg)
+    if arg then
       		local skybox = Instance.new("Sky")
 skybox.Parent = game.Lighting
 skybox.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
@@ -67,11 +70,10 @@ skybox.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
 skybox.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
 skybox.StarCount = 5000
   	end    
-})
+end)
 
-aTab:AddButton({
-	Name = "Night Sky",
-	Callback = function()
+local NightSky = AutoFSec1:Toggle("Auto Farm", function(t)
+    if arg then
 	    getgenv().farmer = true
 	    while wait() do
 	    if getgenv().farmer == true then
@@ -79,174 +81,108 @@ aTab:AddButton({
 	    end
 	    end
     end
-})
+end)
 
--- buttons 2
+local function destroyUi()
+    if ScreenGuiDiscord then
+        destroyUi()
+    else
+        ScreenGuiDiscord = nil
+    end
+end
 
-Tab:AddButton({
-	Name = "Reach GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+local ReachGui = AutoFSec1:Toggle("Reach GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rh"))()
+  	else
+      destroyUi()
+      end
+end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rh"))()
+local ReactGui = AutoFSec1:Toggle("React GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rt"))()
+  	else
+      destroyUi()
   	end    
-})
+end)
 
-Tab:AddButton({
-	Name = "React GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+local CracksGui = AutoFSec1:Toggle("Cracks GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/cracc"))()
+  	else
+      destroyUi()
+      end
+end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rt"))()
-  	end    
-})
+local StrikerGui = AutoFSec1:Toggle("Striker GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/st"))()
+  	else
+      destroyUi()
+  	end
+end)
 
-Tab:AddButton({
-	Name = "Cracks GUI!(OP)",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+local GKGui = AutoFSec1:Toggle("GK GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/gkkmmm"))()
+  	else
+      destroyUi()
+      end
+end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/cracc"))()
-  	end    
-})
+local BallGui = AutoFSec1:Toggle("Balls mod GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/BAII"))()
+  	else
+      destroyUi()
+      end
+end)
 
-Tab:AddButton({
-	Name = "Striker GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+local SkGui = AutoFSec1:Toggle("SuperKicks GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/sk"))()
+  	else
+      destroyUi()
+      end
+end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/st"))()
-  	end    
-})
+local PLGui = AutoFSec1:Toggle("Ping & level changer GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://pastebin.com/raw/M4naWpyt"))()
+  	else
+      destroyUi()
+end
+end)
 
-Tab:AddButton({
-	Name = "GoalKeeper GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+local LPGui = AutoFSec1:Toggle("LocalPlayer GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/local"))()
+  	else
+      destroyUi()
+      end
+end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/gkkmmm"))()
-  	end    
-})
+local MiscGui = AutoFSec1:Toggle("Miscellaneous GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/mis"))()
+  	else
+      destroyUi()
+      end
+end)
 
-Tab:AddButton({
-	Name = "Ball Mods GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+local KillGui = AutoFSec1:Toggle("Kill GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/murder"))()
+  	else
+      destroyUi()
+      end
+end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/BAII"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "Super Kicks GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/sk"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "Ping And Level Changer GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-loadstring(game:HttpGet("https://pastebin.com/raw/M4naWpyt"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "LocalPlayer GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/local"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "Miscellaneous GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/mis"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "Kill GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/murder"))()
-  	end    
-})
-
-Tab:AddButton({
-	Name = "Powers GUI!",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Loading...",
-	Content = "Please wait loading may take some seconds...",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/pw"))()
-  	end    
-})
+local PWGui = AutoFSec1:Toggle("Powers GUI", function(arg)
+    if arg then
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/pw"))()
+  	else
+      destroyUi()
+      end
+end)
