@@ -25,164 +25,97 @@ local RootPart = Player.Character.HumanoidRootPart
 local Players = game:GetService("Players")
 local player = Player
 
--- Locate the ScreenGui in the Player's PlayerGui
-local ScreenGuiDiscord = game.CoreGui:FindFirstChild("Discord")
+-- Load the DiscordLib
+local DiscordLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt"))()
+local win = DiscordLib:Window("TPS Neverlose")
 
-if not ScreenGuiDiscord then
-    ScreenGuiDiscord = nil
-end
+local serv = win:Server("Main", "")
+local btns = serv:Channel("Features")
 
-local Neverlose_Main = loadstring(game:HttpGet("https://raw.githubusercontent.com/Mana42138/Neverlose-UI/main/Source.lua"))()
-local Win = Neverlose_Main:Window({
-    Title = "TPS Neverlose",
-    CFG = "TPS Street Soccer",
-    Key = Enum.KeyCode.H,
-    External = {
-        KeySystem = false,
-        Key = {
-            "2025",
-            "yBloodz"
-        }
-    }
-})
-
-local TabSection1 = Win:TSection("Main")
-
-local Autofarm = TabSection1:Tab("All GUI's") 
-
-local AutoFSec1 = Autofarm:Section("Main")
-
-local TestFarm1 = AutoFSec1:Toggle("AntiCheat Bypasser", function(arg)
-      	if arg then
-	loadstring(game:HttpGet("https://freenote.biz/raw/vyzuuBLBkX"))()
-	end
+btns:Button("Anticheat Bypasser", function()
+    loadstring(game:HttpGet("https://freenote.biz/raw/vyzuuBLBkX"))()
+    DiscordLib:Notification("Notification", "Anticheat Bypasser activated!", "Okay!")
 end)
 
-local sky = AutoFSec1:Toggle("Purple Sky", function(arg)
-    if arg then
-      		local skybox = Instance.new("Sky")
-skybox.Parent = game.Lighting
-skybox.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
-skybox.SkyboxDn = "http://www.roblox.com/asset/?id=159454296"
-skybox.SkyboxFt = "http://www.roblox.com/asset/?id=159454293"
-skybox.SkyboxLf = "http://www.roblox.com/asset/?id=159454286"
-skybox.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
-skybox.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
-skybox.StarCount = 5000
-  	end    
+btns:Button("Purple Sky", function()
+    local skybox = Instance.new("Sky")
+    skybox.Parent = game.Lighting
+    skybox.SkyboxBk = "http://www.roblox.com/asset/?id=159454299"
+    skybox.SkyboxDn = "http://www.roblox.com/asset/?id=159454296"
+    skybox.SkyboxFt = "http://www.roblox.com/asset/?id=159454293"
+    skybox.SkyboxLf = "http://www.roblox.com/asset/?id=159454286"
+    skybox.SkyboxRt = "http://www.roblox.com/asset/?id=159454300"
+    skybox.SkyboxUp = "http://www.roblox.com/asset/?id=159454288"
+    skybox.StarCount = 5000
+    DiscordLib:Notification("Notification", "Purple Sky applied!", "Okay!")
 end)
 
-local NightSky = AutoFSec1:Toggle("Auto Farm", function(t)
-    if arg then
-	    getgenv().farmer = true
-	    while wait() do
-	    if getgenv().farmer == true then
-	    game.Lighting.TimeOfDay = "00:00:00"
-	    end
-	    end
+btns:Button("Night Sky", function()
+    getgenv().farmer = true
+    while wait() do
+        if getgenv().farmer == true then
+            game.Lighting.TimeOfDay = "00:00:00"
+        end
     end
+    DiscordLib:Notification("Notification", "Night Sky activated!", "Okay!")
 end)
 
-local function destroyUi()
-    if ScreenGuiDiscord then
-        destroyUi()
-    else
-        ScreenGuiDiscord = nil
-    end
-end
-
-local ReachGui = AutoFSec1:Toggle("Reach GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rh"))()
-  	else
-      destroyUi()
-      end
+btns:Button("Reach GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rh"))()
+    DiscordLib:Notification("Notification", "Reach GUI activated!", "Okay!")
 end)
 
-local ReactGui = AutoFSec1:Toggle("React GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rt"))()
-  	else
-      destroyUi()
-  	end    
+btns:Button("React GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/Rt"))()
+    DiscordLib:Notification("Notification", "React GUI activated!", "Okay!")
 end)
 
-local CracksGui = AutoFSec1:Toggle("Cracks GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/cracc"))()
-  	else
-      destroyUi()
-      end
+btns:Button("Cracks GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/cracc"))()
+    DiscordLib:Notification("Notification", "Cracks GUI activated!", "Okay!")
 end)
 
-local StrikerGui = AutoFSec1:Toggle("Striker GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/st"))()
-  	else
-      destroyUi()
-  	end
+btns:Button("Striker GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/st"))()
+    DiscordLib:Notification("Notification", "Striker GUI activated!", "Okay!")
 end)
 
-local GKGui = AutoFSec1:Toggle("GK GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/gkkmmm"))()
-  	else
-      destroyUi()
-      end
+btns:Button("GK GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/gkkmmm"))()
+    DiscordLib:Notification("Notification", "GK GUI activated!", "Okay!")
 end)
 
-local BallGui = AutoFSec1:Toggle("Balls mod GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/BAII"))()
-  	else
-      destroyUi()
-      end
+btns:Button("Balls mod GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/BAII"))()
+    DiscordLib:Notification("Notification", "Balls mod GUI activated!", "Okay!")
 end)
 
-local SkGui = AutoFSec1:Toggle("SuperKicks GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/sk"))()
-  	else
-      destroyUi()
-      end
+btns:Button("SuperKicks GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/sk"))()
+    DiscordLib:Notification("Notification", "SuperKicks GUI activated!", "Okay!")
 end)
 
-local PLGui = AutoFSec1:Toggle("Ping & level changer GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://pastebin.com/raw/M4naWpyt"))()
-  	else
-      destroyUi()
-end
+btns:Button("Ping & Level Changer GUI", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/M4naWpyt"))()
+    DiscordLib:Notification("Notification", "Ping & Level Changer GUI activated!", "Okay!")
 end)
 
-local LPGui = AutoFSec1:Toggle("LocalPlayer GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/local"))()
-  	else
-      destroyUi()
-      end
+btns:Button("LocalPlayer GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/local"))()
+    DiscordLib:Notification("Notification", "LocalPlayer GUI activated!", "Okay!")
 end)
 
-local MiscGui = AutoFSec1:Toggle("Miscellaneous GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/mis"))()
-  	else
-      destroyUi()
-      end
+btns:Button("Miscellaneous GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/mis"))()
+    DiscordLib:Notification("Notification", "Miscellaneous GUI activated!", "Okay!")
 end)
 
-local KillGui = AutoFSec1:Toggle("Kill GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/murder"))()
-  	else
-      destroyUi()
-      end
+btns:Button("Kill GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/murder"))()
+    DiscordLib:Notification("Notification", "Kill GUI activated!", "Okay!")
 end)
 
-local PWGui = AutoFSec1:Toggle("Powers GUI", function(arg)
-    if arg then
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/pw"))()
-  	else
-      destroyUi()
-      end
+btns:Button("Powers GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cnd00idjehdil1dhw8w9wowjeie9r00ro9djfjx/xiodidhd9dodjdifijdidodo/main/pw"))()
+    DiscordLib:Notification("Notification", "Powers GUI activated!", "Okay!")
 end)
